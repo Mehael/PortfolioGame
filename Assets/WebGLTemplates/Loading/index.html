@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | LinverPortfolio</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas"></canvas>
+      <div id="loading-art"></div>
+	  <div id="unity-loading-bar">
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+		  <p id="loading-percent"><b>0%</b></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Build.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Build.data",
+        frameworkUrl: buildUrl + "/Build.framework.js",
+        codeUrl: buildUrl + "/Build.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "LinverPortfolio",
+        productVersion: "1.0",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+	  var loadingPercent = document.querySelector("#loading-percent");
+	  var loadingBack = document.querySelector("#loading-art");
+	  
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+		var w = window.screen.width;
+		var h = window.screen.height;
+		if (h/w >= 1.67){
+			canvas.style.width = w + "px";
+			canvas.style.height = Math.ceil(w * 1.67) + "px";
+		}
+		else
+		{
+			canvas.style.height = h + "px";
+			canvas.style.width = Math.ceil(h * 0.6) + "px";
+		}
+		//loadingPercent.textContent = w + "/" + h + " d" + (h/w);
+	  } else {
+		canvas.style.width =  "{{{ WIDTH }}}px";
+		canvas.style.height = "{{{ HEIGHT }}}px";
+      }
+	  loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          var p = Math.ceil(100 * progress) + "%";
+		  progressBarFull.style.width = p;
+		  loadingPercent.textContent = p;
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+		  loadingBack.style.display = "none";
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
