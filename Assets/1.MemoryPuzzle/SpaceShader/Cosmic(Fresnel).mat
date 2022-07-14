@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _StarMapTex:
-        m_Texture: {fileID: 2800000, guid: 580e7698afeaf1a4c95ab9543698e5d8, type: 3}
+        m_Texture: {fileID: 2800000, guid: dd79d2decd895464e8b3c9797a4bb646, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -42,7 +42,7 @@ Material:
     - _FresnelYSpeed: -0.03
     - _OverallCosmicGlow: 1
     - _StarMapGlow: 30.22
-    - _StarMapSize: 0.85
+    - _StarMapSize: 0.75
     - _StarMapXSpeed: 0
     - _StarMapYSpeed: -0.03
     m_Colors:
