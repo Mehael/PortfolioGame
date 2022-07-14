@@ -36,16 +36,16 @@ Material:
     - _CosmicFieldSize: 2.63
     - _CosmicFieldXSpeed: 0
     - _CosmicFieldYSpeed: -0.08
-    - _FresnelGlow: 5.11
-    - _FresnelRadius: 2.42
+    - _FresnelGlow: 4.6
+    - _FresnelRadius: 1.93
     - _FresnelXSpeed: 0
     - _FresnelYSpeed: -0.03
     - _OverallCosmicGlow: 1
-    - _StarMapGlow: 30.22
+    - _StarMapGlow: 0.55
     - _StarMapSize: 0.75
     - _StarMapXSpeed: 0
     - _StarMapYSpeed: -0.03
     m_Colors:
-    - _FresnelColor1: {r: 0.5490196, g: 0.3294118, b: 1, a: 0}
-    - _FresnelColor2: {r: 0.1333333, g: 0.07843138, b: 0.5529412, a: 0}
+    - _FresnelColor1: {r: 1, g: 1, b: 1, a: 0}
+    - _FresnelColor2: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
