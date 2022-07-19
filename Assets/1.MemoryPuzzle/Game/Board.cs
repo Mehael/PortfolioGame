@@ -41,7 +41,7 @@ namespace MemoryPuzzle
             return new Vector3(
                 boardCoords.x + 0.5f,
                 boardCoords.y + 0.5f,
-                (boardCoords.y / 10) - 0.08f
+                0
             );
         }
 

@@ -71,13 +71,16 @@ namespace MemoryPuzzle
             movementCallback += () => IsInMovement = false;
             
             coords = newCoords;
-
+            var newWorldPosition = Board.LogicToWorldCoords(newCoords);
+            
             IsInMovement = true;
             currentMovementCoroutine = StartCoroutine(
                 transform.MoveTo(
-                    Board.LogicToWorldCoords(newCoords),
+                    newWorldPosition,
                     MovementSpeed,
                     movementCallback));
+            
+            transform.LookAt(newWorldPosition, Vector3.forward);
         }
 
         private void MoveHeroSprite(Vector2 enterPoint)
@@ -101,8 +104,8 @@ namespace MemoryPuzzle
 
         public void MoveDown() => MoveTo(coords + Vector2.down);
         public void MoveUp() => MoveTo(coords + Vector2.up);
-        public void MoveRight() => MoveTo(coords + Vector2.right);
-        public void MoveLeft() => MoveTo(coords + Vector2.left);
+        public void MoveRight() => MoveTo(coords + Vector2.left);
+        public void MoveLeft() => MoveTo(coords + Vector2.right);
 
         public static void Fall()
         {

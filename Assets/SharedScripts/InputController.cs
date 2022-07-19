@@ -54,7 +54,7 @@ public class InputController : MonoBehaviour
         var delta = end - startingMousePos;
         if (delta.magnitude < SwipeDistanceFilter)
         {
-            OnAction?.Invoke();
+            //OnAction?.Invoke();
             return;
         }
 
