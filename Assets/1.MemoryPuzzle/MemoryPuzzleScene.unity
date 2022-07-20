@@ -317,9 +317,9 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -5741,6 +5741,7 @@ GameObject:
   - component: {fileID: 1687258584}
   - component: {fileID: 1687258582}
   - component: {fileID: 1687258586}
+  - component: {fileID: 1687258583}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -5756,6 +5757,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   m_Enabled: 1
+--- !u!114 &1687258583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687258581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f68cd3c98c90c4595f911f6b0f0c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShiningSpeed: 0.7
+  DecoySpeed: 1
+  MaskingCenter: {fileID: 2018451520}
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -6154,6 +6170,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 5
+--- !u!114 &6168885481665575427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6168885481665575425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4757e6a0ab050a64ba6dfa9bbae42889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathVFX: {fileID: 38866847}
+  MaskingController: {fileID: 1687258583}
 --- !u!1001 &7287389167915142453
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ namespace MemoryPuzzle
     public class Tile : MonoBehaviour
     {
         public virtual bool IsPassable => true;
-
+        public Renderer Model;
         public Vector2 Coords { get; private set; }
 
         protected virtual void Start()

@@ -16,8 +16,8 @@ namespace MemoryPuzzle
         public Vector2 coords { get; private set; }
         public static PlayerController instance;
         public Action OnMovementStart;
-        public bool IsInMovement { get; private set; }      
-        
+        public bool IsInMovement { get; private set; }
+        public Action OnDeath;
         private void Awake()
         {
             instance = this;
@@ -90,18 +90,6 @@ namespace MemoryPuzzle
         }
 
         private bool isActive = true;
-
-        private IEnumerator Die()
-        {
-            isActive = false;
-            
-            AudioSystem.Play("FallToHole");
-
-            StartCoroutine(transform.ScaleHide(1f));
-            yield return new WaitForSeconds(1.5f);
-            LevelLoader.RestartLevel();
-        }
-
         public void MoveDown() => MoveTo(coords + Vector2.down);
         public void MoveUp() => MoveTo(coords + Vector2.up);
         public void MoveRight() => MoveTo(coords + Vector2.left);
@@ -109,7 +97,8 @@ namespace MemoryPuzzle
 
         public static void Fall()
         {
-            instance.StartCoroutine(instance.Die());
+            instance.isActive = false;
+            instance.OnDeath?.Invoke();
         }
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21289a88453cbe94f94d31f363ba956d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Model: {fileID: 8500740584980401336}
   visual: {fileID: 4831424948911570517}
 --- !u!1 &4831424948911570517
 GameObject:
@@ -115,6 +116,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 975814973761073626, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7044526498104850699, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
       propertyPath: m_Name
       value: Finish
@@ -178,5 +183,10 @@ GameObject:
 --- !u!4 &8322880990369323932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8383406108271450757, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
+  m_PrefabInstance: {fileID: 564928362352247065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8500740584980401336 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8227995017202650529, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
   m_PrefabInstance: {fileID: 564928362352247065}
   m_PrefabAsset: {fileID: 0}
