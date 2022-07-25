@@ -25,10 +25,10 @@ namespace MemoryPuzzle
 
         private void Init()
         {
-            foreach (var tile in Board.current.Tiles)
-                foreach (var material in tile.Value.Model.materials)
-                    if (!maskedMaterials.Contains(material))
-                        maskedMaterials.Add(material);
+            //foreach (var tile in Board.current.Tiles)
+            //    foreach (var material in tile.Value.Model.materials)
+            //       if (!maskedMaterials.Contains(material))
+            //            maskedMaterials.Add(material);
         }
 
         private void Update()
@@ -37,13 +37,12 @@ namespace MemoryPuzzle
                 Init();
             
             var cutoutPos = mainCamera.WorldToViewportPoint(MaskingCenter.position);
-            //cutoutPos.y /= Screen.width / Screen.height;
-            
+
             foreach (var material in maskedMaterials)
             {
-                material.SetVector(CutoutPos, cutoutPos); 
-                material.SetFloat(CutoutSize, size);
-                //material.SetFloat(FalloutSize, .05f);
+                //material.SetVector(CutoutPos, cutoutPos); 
+                //material.SetFloat(CutoutSize, size);
+
             }
         }
         

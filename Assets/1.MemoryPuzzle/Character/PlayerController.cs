@@ -28,7 +28,9 @@ namespace MemoryPuzzle
         {
             board = Board.current;
             coords = Board.WorldToLogicCoords(transform.position);
-                
+            if (board.Tiles.ContainsKey(coords))
+                board.Tiles[coords].Interact();
+            
             InputController.OnAction += Fall;
             InputController.OnLeft += MoveLeft;
             InputController.OnRight += MoveRight;
@@ -50,36 +52,43 @@ namespace MemoryPuzzle
             if (isActive == false) return;
 
             OnMovementStart?.Invoke();
-            if (IsInMovement)
-            {
+            if (IsInMovement) {
                 StopCoroutine(currentMovementCoroutine);
                 MoveHeroSprite(coords);
                 movementCallback.Invoke();
             }
 
             Board.current.TurnDone();
-            if (board.Tiles.ContainsKey(newCoords))
-            {
-                var nextTile = board.Tiles[newCoords];
-                if (!nextTile.IsPassable)
-                {
-                    newCoords = coords;
-                    AudioSystem.Play("WallStuck");
-                }
-            }
 
-            movementCallback = Board.current.OnStep(newCoords);
-            movementCallback += () => IsInMovement = false;
-            
-            coords = newCoords;
+            var isWallStuck = board.Tiles.ContainsKey(newCoords) && !board.Tiles[newCoords].IsPassable;
             var newWorldPosition = Board.LogicToWorldCoords(newCoords);
             
             IsInMovement = true;
-            currentMovementCoroutine = StartCoroutine(
-                transform.MoveTo(
-                    newWorldPosition,
-                    MovementSpeed,
-                    movementCallback));
+            if (isWallStuck) {
+                currentMovementCoroutine = StartCoroutine(WallStuck());
+            } else {
+                movementCallback = () => IsInMovement = false;
+                movementCallback += Board.current.Interact(newCoords);
+                coords = newCoords;
+                
+                currentMovementCoroutine = StartCoroutine(
+                    transform.MoveTo(
+                        newWorldPosition,
+                        MovementSpeed,
+                        movementCallback)); 
+            }
+
+            IEnumerator WallStuck()
+            {
+                var positionStarting = Board.LogicToWorldCoords(coords);
+                var positionBetweenTiles = (newWorldPosition + positionStarting) / 2;
+                
+                yield return StartCoroutine(transform.MoveTo(positionBetweenTiles, MovementSpeed * 2));
+                Board.current.Tiles[newCoords].Interact();
+                IsInMovement = false;
+                yield return StartCoroutine(transform.MoveTo(positionStarting, MovementSpeed * 2));
+                Board.current.Tiles[coords].Interact();
+            }
         }
 
         private void MoveHeroSprite(Vector2 enterPoint)

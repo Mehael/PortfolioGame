@@ -32,10 +32,9 @@ namespace MemoryPuzzle
         private void Update()
         {
             var delta = transform.position - prevPosition;
-            var isMoving = delta.magnitude > float.Epsilon;
-            animator.SetBool(IsMoving, isMoving);
+            animator.SetBool(IsMoving, controller.IsInMovement);
             prevPosition = transform.position;
-            if (isMoving)
+            if (controller.IsInMovement)
                 transform.LookAt(transform.position + delta, Vector3.forward);
         }
 

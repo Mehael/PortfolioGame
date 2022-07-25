@@ -7,5 +7,10 @@ namespace MemoryPuzzle
     public class Wall : Tile
     {
         public override bool IsPassable => false;
+
+        protected override void OnStep()
+        {
+            AudioSystem.Play("WallStuck");
+        }
     }
 }

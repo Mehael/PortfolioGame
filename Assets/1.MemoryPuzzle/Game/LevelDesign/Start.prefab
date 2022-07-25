@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 5443526464822590768}
+  RunePrefab: {fileID: 3746526590476508415, guid: b8b50068155bfd2469b70cd197d4a9a9, type: 3}
 --- !u!1001 &4153725842007814289
 PrefabInstance:
   m_ObjectHideFlags: 0

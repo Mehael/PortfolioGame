@@ -15,7 +15,7 @@ namespace MemoryPuzzle
             Board.current.RegisterFinish(this);
         }
 
-        public override void OnStep()
+        protected override void OnStep()
         {
             visual.SetActive(false);
             AudioSystem.Play("DoorOpen");

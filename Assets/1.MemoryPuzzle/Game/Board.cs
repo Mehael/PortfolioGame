@@ -20,14 +20,14 @@ namespace MemoryPuzzle
             current = this;
         }
 
-        public Action OnStep(Vector2 newCoords)
+        public Action Interact(Vector2 newCoords)
         {
             return () =>
             {
                 if (!Tiles.ContainsKey(newCoords))
                     PlayerController.Fall();
                 else
-                    Tiles[newCoords].OnStep();
+                    Tiles[newCoords].Interact();
             };
         }
 

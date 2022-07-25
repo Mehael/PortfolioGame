@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MaskingMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 6e49134ce4370dd46a57d67776f80070, type: 3}
-  m_ShaderKeywords: 
+  m_Name: ShinyColor
+  m_Shader: {fileID: -6465566751694194690, guid: ea6a45d1cff11e14faa116f976091d8e, type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,18 +20,16 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 78129c307a0d1a946a35703ee3a0e045, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_6B02321F_Texture_1:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_43DCF7E7: 0.5
-    - Vector1_76FE618D: 0.88
-    - Vector1_A1115FCA: 1.12
-    - _CutoutSize: 1
-    - _FalloutSize: 1
+    m_Floats: []
     m_Colors:
-    - Vector2_16A6742A: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_623F421D: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - Vector2_B29068CD: {r: 1, g: 1, b: 1, a: 1}
-    - _CutoutPos: {r: 0.71, g: 0.36, b: 0, a: 0}
+    - Color_185A388F: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 4, g: 4, b: 4, a: 1}
+    - _MainTex: {r: 6.498019, g: 6.498019, b: 6.498019, a: 1}
   m_BuildTextureStacks: []

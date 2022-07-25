@@ -8,7 +8,7 @@ namespace MemoryPuzzle
 {
     public class WeakTile : Tile
     {
-        public override void OnStep()
+        protected override void OnStep()
         {
             AudioSystem.Play("Weak");
             Die();   

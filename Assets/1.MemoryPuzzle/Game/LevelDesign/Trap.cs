@@ -9,7 +9,7 @@ namespace MemoryPuzzle
         public int TurnsToBecomeSafe = 0;
         private bool wasPlayerOnPrevTurn;
         private bool isDeadly;
-        public override void OnTurnMade()
+        protected override void OnTurnMade()
         {
             if (wasPlayerOnPrevTurn)
             {
@@ -30,7 +30,7 @@ namespace MemoryPuzzle
             wasPlayerOnPrevTurn = false;
         }
 
-        public override void OnStep()
+        protected override void OnStep()
         {
             if (isDeadly)
                 PlayerController.Fall();

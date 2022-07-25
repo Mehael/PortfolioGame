@@ -11,7 +11,7 @@ namespace MemoryPuzzle
     public class Tile : MonoBehaviour
     {
         public virtual bool IsPassable => true;
-        public Renderer Model;
+        public GameObject RunePrefab;
         public Vector2 Coords { get; private set; }
 
         protected virtual void Start()
@@ -27,11 +27,25 @@ namespace MemoryPuzzle
             Destroy(gameObject);
         }
 
-        public virtual void OnStep()
+        public void Interact()
+        {
+            if (RunePrefab != null)
+                StartCoroutine(ShowRune());
+            OnStep();
+        }
+        
+        protected virtual void OnStep()
         {
             AudioSystem.Play("FloorStep");
         }
 
-        public virtual void OnTurnMade() { }
+        protected virtual void OnTurnMade() { }
+
+        private IEnumerator ShowRune()
+        {
+            var rune = Instantiate(RunePrefab, transform.position, RunePrefab.transform.rotation, transform);
+            yield return rune.transform.ScaleFromTo(Vector3.one * .7f,Vector3.one * 1.5f, 1.5f);
+            Destroy(rune.gameObject);
+        }
     }
 }
