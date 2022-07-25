@@ -18,6 +18,7 @@ namespace MemoryPuzzle
         public Action OnMovementStart;
         public bool IsInMovement { get; private set; }
         public Action OnDeath;
+        public Action OnVictory;
         private void Awake()
         {
             instance = this;
@@ -79,8 +80,6 @@ namespace MemoryPuzzle
                     newWorldPosition,
                     MovementSpeed,
                     movementCallback));
-            
-            transform.LookAt(newWorldPosition, Vector3.forward);
         }
 
         private void MoveHeroSprite(Vector2 enterPoint)
@@ -99,6 +98,12 @@ namespace MemoryPuzzle
         {
             instance.isActive = false;
             instance.OnDeath?.Invoke();
+        }
+        
+        public static void Victory()
+        {
+            instance.isActive = false;
+            instance.OnVictory?.Invoke();
         }
     }
 }

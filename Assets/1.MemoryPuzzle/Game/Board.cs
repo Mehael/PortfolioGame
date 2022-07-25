@@ -77,7 +77,7 @@ namespace MemoryPuzzle
         {
             finishTiles.Remove(tile);
             if (finishTiles.Count == 0)
-                LevelLoader.LoadNextLevel();
+                PlayerController.Victory();
         }
     }
 }
