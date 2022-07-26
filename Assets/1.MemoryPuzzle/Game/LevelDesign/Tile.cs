@@ -30,7 +30,7 @@ namespace MemoryPuzzle
         public void Interact()
         {
             if (RunePrefab != null)
-                StartCoroutine(ShowRune());
+                Instantiate(RunePrefab, transform.position, RunePrefab.transform.rotation, transform);
             OnStep();
         }
         
@@ -40,12 +40,5 @@ namespace MemoryPuzzle
         }
 
         protected virtual void OnTurnMade() { }
-
-        private IEnumerator ShowRune()
-        {
-            var rune = Instantiate(RunePrefab, transform.position, RunePrefab.transform.rotation, transform);
-            yield return rune.transform.ScaleFromTo(Vector3.one * .7f,Vector3.one * 1.5f, 1.5f);
-            Destroy(rune.gameObject);
-        }
     }
 }
