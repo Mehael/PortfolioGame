@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 669281094}
   - component: {fileID: 669281096}
   - component: {fileID: 669281097}
+  - component: {fileID: 669281098}
   m_Layer: 0
   m_Name: _Systems
   m_TagString: Untagged
@@ -529,6 +530,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SwipeDistanceFilter: 20
+--- !u!114 &669281098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669281093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de828350248742d479da43a2edbc1777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PostProcessing: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
 --- !u!1001 &690540014
 PrefabInstance:
   m_ObjectHideFlags: 0
