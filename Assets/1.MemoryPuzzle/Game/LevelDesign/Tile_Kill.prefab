@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8524a42cde0aa3f4a8c5048281c9de04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunePrefab: {fileID: 4729703298536744135, guid: 0e728ab3818775047921adeaa03a72e5, type: 3}
+  RunePrefab: {fileID: -7818049053892203957, guid: 0e728ab3818775047921adeaa03a72e5, type: 3}
 --- !u!1001 &9023127235237771968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22,7 +22,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7044526498104850699, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
       propertyPath: m_Name
-      value: Kill
+      value: Kill Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7044526498104850699, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
       propertyPath: m_Icon

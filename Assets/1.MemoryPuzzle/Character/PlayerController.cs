@@ -13,7 +13,7 @@ namespace MemoryPuzzle
         private Action movementCallback;
 
         public float MovementSpeed = 5f;
-        public Vector2 coords { get; private set; }
+        public Vector2Int Coords { get; private set; }
         public static PlayerController instance;
         public Action OnMovementStart;
         public bool IsInMovement { get; private set; }
@@ -27,9 +27,9 @@ namespace MemoryPuzzle
         private void Start()
         {
             board = Board.current;
-            coords = Board.WorldToLogicCoords(transform.position);
-            if (board.Tiles.ContainsKey(coords))
-                board.Tiles[coords].Interact();
+            Coords = Board.WorldToLogicCoords(transform.position);
+            if (board.Tiles.ContainsKey(Coords))
+                board.Tiles[Coords].Interact();
             
             InputController.OnAction += Fall;
             InputController.OnLeft += MoveLeft;
@@ -47,14 +47,14 @@ namespace MemoryPuzzle
             InputController.OnDown -= MoveDown;
         }
 
-        private void MoveTo(Vector2 newCoords)
+        private void MoveTo(Vector2Int newCoords)
         {
             if (isActive == false) return;
 
             OnMovementStart?.Invoke();
             if (IsInMovement) {
                 StopCoroutine(currentMovementCoroutine);
-                MoveHeroSprite(coords);
+                MoveHeroSprite(Coords);
                 movementCallback.Invoke();
             }
 
@@ -69,7 +69,7 @@ namespace MemoryPuzzle
             } else {
                 movementCallback = () => IsInMovement = false;
                 movementCallback += Board.current.Interact(newCoords);
-                coords = newCoords;
+                Coords = newCoords;
                 
                 currentMovementCoroutine = StartCoroutine(
                     transform.MoveTo(
@@ -80,28 +80,28 @@ namespace MemoryPuzzle
 
             IEnumerator WallStuck()
             {
-                var positionStarting = Board.LogicToWorldCoords(coords);
+                var positionStarting = Board.LogicToWorldCoords(Coords);
                 var positionBetweenTiles = (newWorldPosition + positionStarting) / 2;
                 
                 yield return StartCoroutine(transform.MoveTo(positionBetweenTiles, MovementSpeed * 2));
                 Board.current.Tiles[newCoords].Interact();
                 IsInMovement = false;
                 yield return StartCoroutine(transform.MoveTo(positionStarting, MovementSpeed * 2));
-                Board.current.Tiles[coords].Interact();
+                Board.current.Tiles[Coords].Interact();
             }
         }
 
-        private void MoveHeroSprite(Vector2 enterPoint)
+        private void MoveHeroSprite(Vector2Int enterPoint)
         {
             transform.position = Board.LogicToWorldCoords(enterPoint);
-            coords = enterPoint;
+            Coords = enterPoint;
         }
 
         private bool isActive = true;
-        public void MoveDown() => MoveTo(coords + Vector2.down);
-        public void MoveUp() => MoveTo(coords + Vector2.up);
-        public void MoveRight() => MoveTo(coords + Vector2.left);
-        public void MoveLeft() => MoveTo(coords + Vector2.right);
+        public void MoveDown() => MoveTo(Coords + Vector2Int.down);
+        public void MoveUp() => MoveTo(Coords + Vector2Int.up);
+        public void MoveRight() => MoveTo(Coords + Vector2Int.left);
+        public void MoveLeft() => MoveTo(Coords + Vector2Int.right);
 
         public static void Fall()
         {

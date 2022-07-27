@@ -10,8 +10,9 @@ namespace MemoryPuzzle
     public class PlayerAnimator : MonoBehaviour
     {
         public ParticleSystem DeathVFX;
-        public MaskingController MaskingController;
-
+        public FieldHighlightController HighlightController;
+        public RuneAnimator FallRune;
+        
         private Animator animator;
         private PlayerController controller;
         
@@ -40,12 +41,13 @@ namespace MemoryPuzzle
 
         private IEnumerator Die()
         {
+            Instantiate(FallRune, transform.position, FallRune.transform.rotation).Interact();
             DeathVFX.Play();
-            var longest = StartCoroutine(MaskingController.PlayShine());
+            StartCoroutine(HighlightController.PlayShine(controller.Coords));
             animator.SetTrigger(DieTrigger);
             AudioSystem.Play("FallToHole");
             StartCoroutine(transform.ScaleHide(1f));
-            yield return longest;
+            yield return new WaitForSeconds(3f);
             LevelLoader.RestartLevel();
         }
         

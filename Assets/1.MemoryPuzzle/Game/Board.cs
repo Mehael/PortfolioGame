@@ -9,7 +9,7 @@ namespace MemoryPuzzle
 {
     public class Board : MonoBehaviour
     {
-        public Dictionary<Vector2, Tile> Tiles = new Dictionary<Vector2, Tile>();
+        public Dictionary<Vector2Int, Tile> Tiles = new Dictionary<Vector2Int, Tile>();
         private List<TileFinish> finishTiles = new List<TileFinish>();
         
         public static Board current;
@@ -20,7 +20,7 @@ namespace MemoryPuzzle
             current = this;
         }
 
-        public Action Interact(Vector2 newCoords)
+        public Action Interact(Vector2Int newCoords)
         {
             return () =>
             {
@@ -36,7 +36,7 @@ namespace MemoryPuzzle
             OnTurnDone?.Invoke();
         }
         
-        public static Vector3 LogicToWorldCoords(Vector2 boardCoords)
+        public static Vector3 LogicToWorldCoords(Vector2Int boardCoords)
         {
             return new Vector3(
                 boardCoords.x + 0.5f,
@@ -45,18 +45,18 @@ namespace MemoryPuzzle
             );
         }
 
-        public static Vector2 WorldToLogicCoords(Vector2 worldCoords)
+        public static Vector2Int WorldToLogicCoords(Vector2 worldCoords)
         {
-            return new Vector2(
-                Mathf.Round(worldCoords.x - 0.5f),
-                Mathf.Round(worldCoords.y - 0.5f));
+            return new Vector2Int(
+                Mathf.RoundToInt(worldCoords.x - 0.5f),
+                Mathf.RoundToInt(worldCoords.y - 0.5f));
         }
 
         public void Register(Tile tile)
         {
             if (Tiles.ContainsKey(tile.Coords))
             {
-                Debug.LogError("Two nodes in one coords: " + tile.name + ", " + Tiles[tile.Coords].name);
+                Debug.LogError("Two nodes in one Coords: " + tile.name + ", " + Tiles[tile.Coords].name);
                 return;
             }
             Tiles.Add(tile.Coords, tile);

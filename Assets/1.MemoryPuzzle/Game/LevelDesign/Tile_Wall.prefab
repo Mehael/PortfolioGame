@@ -1,37 +1,44 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &5116307155838971476
+--- !u!114 &354977843213862172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6370289049120393626}
+  m_GameObject: {fileID: 4348752297812445357}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e21dd81b2d86a9943803cda57126b5b9, type: 3}
+  m_Script: {fileID: 11500000, guid: b95c9ba11f09ec848986b3a3b7987525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 5443526464822590768}
-  RunePrefab: {fileID: 3746526590476508415, guid: b8b50068155bfd2469b70cd197d4a9a9, type: 3}
---- !u!1001 &4153725842007814289
+  RunePrefab: {fileID: -3151182554304376705, guid: d8c6d737d2ec869449814401e9210e2f, type: 3}
+--- !u!1001 &6744968006437958054
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 975814973761073626, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 975814973761073626, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7044526498104850699, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
       propertyPath: m_Name
-      value: Start
+      value: Wall Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7044526498104850699, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
       propertyPath: m_Icon
       value: 
-      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+      objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8383406108271450757, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8383406108271450757, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -76,13 +83,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5412126600473465342, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
---- !u!1 &6370289049120393626 stripped
+--- !u!1 &4348752297812445357 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7044526498104850699, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
-  m_PrefabInstance: {fileID: 4153725842007814289}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &5443526464822590768 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8227995017202650529, guid: 25d4805bb1193dd429a04871f578da5e, type: 3}
-  m_PrefabInstance: {fileID: 4153725842007814289}
+  m_PrefabInstance: {fileID: 6744968006437958054}
   m_PrefabAsset: {fileID: 0}

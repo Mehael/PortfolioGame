@@ -11,14 +11,16 @@ namespace MemoryPuzzle
     public class Tile : MonoBehaviour
     {
         public virtual bool IsPassable => true;
-        public GameObject RunePrefab;
-        public Vector2 Coords { get; private set; }
+        public RuneAnimator RunePrefab;
+        private RuneAnimator runeInstance;
+        public Vector2Int Coords { get; private set; }
 
         protected virtual void Start()
         {
             Coords = Board.WorldToLogicCoords(transform.position);
             Board.current.Register(this);
             Board.current.OnTurnDone += OnTurnMade;
+            runeInstance = Instantiate(RunePrefab, transform.position, RunePrefab.transform.rotation, transform);
         }
 
         protected void Die()
@@ -29,9 +31,13 @@ namespace MemoryPuzzle
 
         public void Interact()
         {
-            if (RunePrefab != null)
-                Instantiate(RunePrefab, transform.position, RunePrefab.transform.rotation, transform);
+            runeInstance.Interact();
             OnStep();
+        }
+
+        public void Highlight(int radius, float time)
+        {
+            runeInstance.Highlight(radius, time);
         }
         
         protected virtual void OnStep()

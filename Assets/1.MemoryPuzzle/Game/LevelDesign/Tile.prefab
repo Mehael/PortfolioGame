@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1534c84552e8674e97ac3d47157dcaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
-  RunePrefab: {fileID: 3746526590476508415, guid: b8b50068155bfd2469b70cd197d4a9a9, type: 3}
+  RunePrefab: {fileID: 771371039507637877, guid: b8b50068155bfd2469b70cd197d4a9a9, type: 3}
 --- !u!114 &2742541868361636154
 MonoBehaviour:
   m_ObjectHideFlags: 0
